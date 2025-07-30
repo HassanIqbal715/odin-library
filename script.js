@@ -1,4 +1,10 @@
+const myLibrary = [];
+
 function Book(name, author, pages, isRead) {
+    if (!new.target) {
+        throw Error("Book constructor called without \'new\' operator.");
+    }
+
     this.id = crypto.randomUUID();
     this.name = name;
     this.author = author;
@@ -16,4 +22,8 @@ function Book(name, author, pages, isRead) {
 
         return `${this.name} by ${this.author}, ${this.pages} pages, ${read}`;
     }
+}
+
+function addBookToLibrary(name, author, pages, isRead) {
+    myLibrary.push(new Book(name, author, pages, isRead));
 }
