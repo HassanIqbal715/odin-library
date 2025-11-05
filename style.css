@@ -102,12 +102,13 @@ p {
     position: fixed;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
     background-color: #191919;
     padding: 0px 24px 24px 24px;
     border-radius: 8px;
     border: 3px solid black;
     display: none;
+    margin-left: -325px;
+    margin-top: -227px;
 }
 
 .input-div {
@@ -141,7 +142,7 @@ p {
     margin-bottom: 24px;
 }
 
-.form-topbar {
+#form-topbar {
     display: flex;
     justify-content: space-between;
     background-color: black;

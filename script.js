@@ -152,6 +152,7 @@ const formInputs = form.querySelectorAll("input");
 const formSubmit = document.querySelector("#submit-form");
 const formClose = document.querySelector("#form-topbar-cross");
 const addBook = document.querySelector("#new-book");
+const formTopBar = document.querySelector("#form-topbar");
 
 formInputs.forEach((e) => {
     e.spellcheck = false;
@@ -167,4 +168,31 @@ formClose.addEventListener("click", () => {
 
 addBook.addEventListener("click", () => {
     form.style.display = "block";
+});
+
+let Dragging = false;
+let startX, startY;
+let offsetX = 0, offsetY = 0;
+
+formTopBar.addEventListener("mousedown", (e) => {
+    Dragging = true;
+
+    startX = e.clientX - offsetX;
+    startY = e.clientY - offsetY;
+
+    document.body.style.userSelect = "none";
+});
+
+document.addEventListener("mousemove", (e) => {
+    if (!Dragging) return;
+
+    offsetX = e.clientX - startX;
+    offsetY = e.clientY - startY;
+
+    form.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+});
+
+document.addEventListener("mouseup", () => {
+    Dragging = false;
+    document.body.style.userSelect = "";
 });
